@@ -1,0 +1,13 @@
+# Blender MTL File: 'None'
+# Material Count: 1
+
+newmtl bicycle.003
+Ns 45.000011
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.540000 0.540000 0.540000
+Ke 0.0 0.0 0.0
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd C:\\Users\\mnguyen287\\Downloads\\bicycle_v2_L1.123ca60579a1-a092-4d1a-b67e-f7f8d23e7c8c\\bicycle_v2_L1.123ca60579a1-a092-4d1a-b67e-f7f8d23e7c8c\\bicycle_bitmap_v2.jpg
