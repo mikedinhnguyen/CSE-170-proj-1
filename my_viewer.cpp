@@ -83,7 +83,10 @@ void MyViewer::add_model(SnShape* s, GsVec p)
 
 void MyViewer::build_scene()
 {
-	//SnPrimitive* p;
+	SnPrimitive* p;
+	p = new SnPrimitive(GsPrimitive::Cylinder, 25, 25, 25.0f); // watch face
+	p->prim().material.diffuse = GsColor::darkblue;
+	p->prim().orientation = GsQuat(GsVec::i, (float)GS_PIDIV2);
 
 	for (int i = 0; i < 7; i++) {
 		model[i] = new SnModel;
@@ -91,7 +94,8 @@ void MyViewer::build_scene()
 	}
 
 	// check to see if path is correct
-	if (!model[0]->model()->load("C:/Users/jacko/Desktop/mikeproj1/newhandlebars.obj")) {
+	// ../../newhandlebars.obj
+	if (!model[0]->model()->load("C:/Users/mnguyen287/Downloads/sigapp/obj files/newhandlebars.obj")) {
 		gsout << "handlebars not loaded" << gsnl;
 	}
 	//model[0]->model()->centralize();
@@ -105,7 +109,7 @@ void MyViewer::build_scene()
 	t[0]->set(m[0]);
 	handlebarsGroup->separator(true);
 
-	if (!model[1]->model()->load("C:/Users/jacko/Desktop/mikeproj1/frame.obj")) {
+	if (!model[1]->model()->load("C:/Users/mnguyen287/Downloads/sigapp/obj files/frame.obj")) {
 		gsout << "frame not loaded" << gsnl;
 	}
 	
@@ -120,7 +124,7 @@ void MyViewer::build_scene()
 	t[1]->set(m[1]);
 	frameGroup->separator(true);
 
-	if (!model[2]->model()->load("C:/Users/jacko/Desktop/mikeproj1/seat.obj")) {
+	if (!model[2]->model()->load("C:/Users/mnguyen287/Downloads/sigapp/obj files/seat.obj")) {
 		gsout << "seat not loaded" << gsnl;
 	}
 	
@@ -135,7 +139,7 @@ void MyViewer::build_scene()
 	t[2]->set(m[2]);
 	seatGroup->separator(true);
 
-	if (!model[3]->model()->load("C:/Users/jacko/Desktop/mikeproj1/backwheel.obj")) {
+	if (!model[3]->model()->load("C:/Users/mnguyen287/Downloads/sigapp/obj files/backwheel.obj")) {
 		gsout << "backwheel not loaded" << gsnl;
 	}
 	backwheelGroup->add(t[3]);
@@ -149,7 +153,7 @@ void MyViewer::build_scene()
 	t[3]->set(m[3]);
 	backwheelGroup->separator(true);
 
-	if (!model[4]->model()->load("C:/Users/jacko/Desktop/mikeproj1/left foot.obj")) {
+	if (!model[4]->model()->load("C:/Users/mnguyen287/Downloads/sigapp/obj files/left foot.obj")) {
 		gsout << "left foot not loaded" << gsnl;
 	}
 	leftfootGroup->add(t[4]);
@@ -163,7 +167,7 @@ void MyViewer::build_scene()
 	t[4]->set(m[4]);
 	leftfootGroup->separator(true);
 
-	if (!model[5]->model()->load("C:/Users/jacko/Desktop/mikeproj1/right foot.obj")) {
+	if (!model[5]->model()->load("C:/Users/mnguyen287/Downloads/sigapp/obj files/right foot.obj")) {
 		gsout << "right foot not loaded" << gsnl;
 	}
 	rightfootGroup->add(t[5]);
@@ -177,7 +181,7 @@ void MyViewer::build_scene()
 	t[5]->set(m[5]);
 	rightfootGroup->separator(true);
 
-	if (!model[6]->model()->load("C:/Users/jacko/Desktop/mikeproj1/frontwheel.obj")) {
+	if (!model[6]->model()->load("C:/Users/mnguyen287/Downloads/sigapp/obj files/frontwheel.obj")) {
 		gsout << "frontwheel not loaded" << gsnl;
 	}
 	frontwheelGroup->add(t[6]);
@@ -195,10 +199,6 @@ void MyViewer::build_scene()
 		g->add(t[i]);
 		g->add(model[i]);
 	}
-
-	//p = new SnPrimitive(GsPrimitive::Cylinder, 5, 5, 0.25f); // watch face
-	//p->prim().material.diffuse = GsColor::darkblue;
-	//p->prim().orientation = GsQuat(GsVec::i, (float)GS_PIDIV2);
 
 	rootg()->add(frameGroup);
 	rootg()->add(frontwheelGroup);
@@ -320,8 +320,28 @@ int MyViewer::handle_keyboard(const GsEvent& e)
 		render();
 		return 1;
 	case 'e':
+		rotate.roty((float)GS_2PI / 360.0f);
+		tranz = t[2]->get();
+		t[2]->get().mult(tranz, rotate);
+		render();
 		return 1;
 	case 'd':
+		rotate.roty((float)GS_2PI / -360.0f);
+		tranz = t[2]->get();
+		t[2]->get().mult(tranz, rotate);
+		render();
+		return 1;
+	case 'r':
+		rotate.rotz((float)GS_2PI / 360.0f);
+		tranz = t[4]->get();
+		t[4]->get().mult(tranz, rotate);
+		render();
+		return 1;
+	case 'f':
+		rotate.rotz((float)GS_2PI / -360.0f);
+		tranz = t[4]->get();
+		t[4]->get().mult(tranz, rotate);
+		render();
 		return 1;
 	case GsEvent::KeySpace:
 		camera().eye.x = 0;
