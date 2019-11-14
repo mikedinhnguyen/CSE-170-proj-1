@@ -94,100 +94,102 @@ void MyViewer::build_scene()
 	if (!model[0]->model()->load("C:/Users/jacko/Desktop/mikeproj1/newhandlebars.obj")) {
 		gsout << "handlebars not loaded" << gsnl;
 	}
-	handlebarsGroup->separator(true);
 	//model[0]->model()->centralize();
 	//model[0]->model()->get_bounding_box(b0);
 	handlebarsGroup->add(t[0]);
 	handlebarsGroup->add(model[0]);
-	x1 = 0.0f;
-	y = -5.0f;
+	x1 = 20.0f;
+	y = 15.0f;
 	z1 = 0.0f;
 	m[0].translation(GsVec(x1, y, z1));
 	t[0]->set(m[0]);
+	handlebarsGroup->separator(true);
 
 	if (!model[1]->model()->load("C:/Users/jacko/Desktop/mikeproj1/frame.obj")) {
 		gsout << "frame not loaded" << gsnl;
 	}
-	frameGroup->separator(true);
+	
 	frameGroup->add(t[1]);
 	frameGroup->add(model[1]);
 	//model[1]->model()->centralize();
 	//model[1]->model()->get_bounding_box(b1);
-	x2 = -20.0f;
-	y2 = -15.0f;
+	x2 = 0.0f;
+	y2 = 0.0f;
 	z2 = 0.0f;
 	m[1].translation(GsVec(x2, y2, z2));
 	t[1]->set(m[1]);
+	frameGroup->separator(true);
 
 	if (!model[2]->model()->load("C:/Users/jacko/Desktop/mikeproj1/seat.obj")) {
 		gsout << "seat not loaded" << gsnl;
 	}
-	seatGroup->separator(true);
+	
 	seatGroup->add(t[2]);
 	seatGroup->add(model[2]);
 	//model[2]->model()->centralize();
 	//model[2]->model()->get_bounding_box(b2);
-	x3 = -0.5f;
-	y3 = 15.0f;
+	x3 = -1.0f;
+	y3 = 17.0f;
 	z3 = 0.0f;
 	m[2].translation(GsVec(x3, y3, z3));
 	t[2]->set(m[2]);
+	seatGroup->separator(true);
 
 	if (!model[3]->model()->load("C:/Users/jacko/Desktop/mikeproj1/backwheel.obj")) {
 		gsout << "backwheel not loaded" << gsnl;
 	}
-	backwheelGroup->separator(true);
 	backwheelGroup->add(t[3]);
 	backwheelGroup->add(model[3]);
-	//model[3]->model()->centralize();
+	model[3]->model()->centralize();
 	//model[3]->model()->get_bounding_box(b3);
-	x4 = -10.0f;
-	y4 = -20.0f;
+	x4 = -11.0f;
+	y4 = -5.0f;
 	z4 = 0.0f;
 	m[3].translation(GsVec(x4, y4, z4));
 	t[3]->set(m[3]);
+	backwheelGroup->separator(true);
 
 	if (!model[4]->model()->load("C:/Users/jacko/Desktop/mikeproj1/left foot.obj")) {
 		gsout << "left foot not loaded" << gsnl;
 	}
-	leftfootGroup->separator(true);
 	leftfootGroup->add(t[4]);
 	leftfootGroup->add(model[4]);
 	//model[4]->model()->centralize();
 	//model[4]->model()->get_bounding_box(b4);
-	x5 = 13.0f;
-	y5 = 1.0f;
+	x5 = 2.0f;
+	y5 = -4.0f;
 	z5 = -4.0f;
 	m[4].translation(GsVec(x5, y5, z5));
 	t[4]->set(m[4]);
+	leftfootGroup->separator(true);
 
 	if (!model[5]->model()->load("C:/Users/jacko/Desktop/mikeproj1/right foot.obj")) {
 		gsout << "right foot not loaded" << gsnl;
 	}
-	rightfootGroup->separator(true);
 	rightfootGroup->add(t[5]);
 	rightfootGroup->add(model[5]);
 	//model[5]->model()->centralize();
 	//model[5]->model()->get_bounding_box(b5);
-	x6 = 4.0f;
-	y6 = -2.5f;
-	z6 = 3.5f;
+	x6 = 6.0f;
+	y6 = -6.0f;
+	z6 = 1.0f;
 	m[5].translation(GsVec(x6, y6, z6));
 	t[5]->set(m[5]);
+	rightfootGroup->separator(true);
 
 	if (!model[6]->model()->load("C:/Users/jacko/Desktop/mikeproj1/frontwheel.obj")) {
 		gsout << "frontwheel not loaded" << gsnl;
 	}
-	frontwheelGroup->separator(true);
 	frontwheelGroup->add(t[6]);
 	frontwheelGroup->add(model[6]);
-	//model[6]->model()->centralize();
+	model[6]->model()->centralize();
 	//model[6]->model()->get_bounding_box(b6);
-	x7 = 18.0f;
-	y7 = 0.0f;
-	z7 = 1.0f;
+	x7 = 25.0f;
+	y7 = -5.0f;
+	z7 = 0.0f;
 	m[6].translation(GsVec(x7, y7, z7));
 	t[6]->set(m[6]);
+	frontwheelGroup->separator(true);
 
 	for (int i = 0; i < 7; i++) {
 		g->add(t[i]);
@@ -198,7 +200,13 @@ void MyViewer::build_scene()
 	//p->prim().material.diffuse = GsColor::darkblue;
 	//p->prim().orientation = GsQuat(GsVec::i, (float)GS_PIDIV2);
 
-	rootg()->add(g);
+	rootg()->add(frameGroup);
+	rootg()->add(frontwheelGroup);
+	rootg()->add(backwheelGroup);
+	rootg()->add(leftfootGroup);
+	rootg()->add(rightfootGroup);
+	rootg()->add(seatGroup);
+	rootg()->add(handlebarsGroup);
 }
 
 // Below is an example of how to control the main loop of an animation:
@@ -244,38 +252,6 @@ void MyViewer::run_animation()
 	} 
 }
 
-void MyViewer::run_other_animation()
-{
-	if (_animating) return; // avoid recursive calls
-	_animating = true;
-
-	GsMat r;
-
-	while (_animating == true)
-	{
-		r.rotx((float)-GS_2PI / 60.0f);
-		//trans.translation(GsVec(0, 0, 0));
-
-		if (_hand == true) {
-			//t[2]->get() = t[2]->get() * trans;
-			t[2]->get() = t[2]->get() * r;
-		}
-
-		if (_uArm == true) {
-			t[1]->get() = t[1]->get() * r;	
-		}
-
-		if (_lArm == true) {
-			t[0]->get() = t[0]->get() * r;
-		}
-
-		//manip->initial_mat(m);
-		render(); // notify it needs redraw
-		//ws_check(); // redraw now
-		_animating = false;
-	}
-}
-
 void MyViewer::show_normals(bool view)
 {
 	// Note that primitives are only converted to meshes in GsModel
@@ -312,34 +288,48 @@ int MyViewer::handle_keyboard(const GsEvent& e)
 	int ret = WsViewer::handle_keyboard(e); // 1st let system check events
 	if (ret) return ret;
 
+	GsMat rotate;
+	GsMat tranz;
+
 	switch (e.key)
 	{
 	case GsEvent::KeyEsc: gs_exit(); return 1;
 	case 'n': { bool b = !_nbut->value(); _nbut->value(b); show_normals(b); return 1; }
 	case 'q':
-		_lArm = true;
-		run_animation();
+		rotate.rotz((float)GS_2PI / 360.0f);
+		tranz = t[3]->get();
+		t[3]->get().mult(tranz, rotate);
+		render();
 		return 1;
 	case 'a':
-		_lArm = true;
-		run_other_animation();
+		rotate.rotz((float)GS_2PI / -360.0f);
+		tranz = t[3]->get();
+		t[3]->get().mult(tranz, rotate);
+		render();
 		return 1;
 	case 'w':
-		_uArm = true;
-		run_animation();
+		rotate.rotz((float)GS_2PI / 360.0f);
+		tranz = t[6]->get();
+		t[6]->get().mult(tranz, rotate);
+		render();
 		return 1;
 	case 's':
-		_uArm = true;
-		run_other_animation();
+		rotate.rotz((float)GS_2PI / -360.0f);
+		tranz = t[6]->get();
+		t[6]->get().mult(tranz, rotate);
+		render();
 		return 1;
 	case 'e':
-		_hand = true;
-		run_animation();
 		return 1;
 	case 'd':
-		_hand = true;
-		run_other_animation();
 		return 1;
+	case GsEvent::KeySpace:
+		camera().eye.x = 0;
+		camera().eye.y = 100;
+		camera().eye.z = 0;
+		render();
+		return 1;
+
 	default: gsout << "Key pressed: " << e.key << gsnl;
 	}
 
