@@ -11,19 +11,28 @@
 
 SnGroup* g = new SnGroup;
 SnGroup* frameGroup = new SnGroup;
+SnGroup* frontwheelGroup = new SnGroup;
 SnGroup* backwheelGroup = new SnGroup;
 SnGroup* leftfootGroup = new SnGroup;
 SnGroup* rightfootGroup = new SnGroup;
 SnGroup* seatGroup = new SnGroup;
 SnGroup* handlebarsGroup = new SnGroup;
-SnModel* model[6];
-SnTransform* t[6];
-GsMat m[6];
-GsBox b0, b1, b2, b3, b4, b5;
+SnModel* model[7];
+SnTransform* t[7];
+GsMat m[7];
 
 bool _hand = false;
 bool _uArm = false;
 bool _lArm = false;
+
+float x1, y, z1;
+float x2, y2, z2;
+float x3, y3, z3;
+float x4, y4, z4;
+float x5, y5, z5;
+float x6, y6, z6;
+float x7, y7, z7;
+
 
 MyViewer::MyViewer(int x, int y, int w, int h, const char* l) : WsViewer(x, y, w, h, l)
 {
@@ -74,70 +83,106 @@ void MyViewer::add_model(SnShape* s, GsVec p)
 
 void MyViewer::build_scene()
 {
-	for (int i = 0; i < 6; i++) {
+	//SnPrimitive* p;
+
+	for (int i = 0; i < 7; i++) {
 		model[i] = new SnModel;
 		t[i] = new SnTransform;
 	}
 
 	// check to see if path is correct
-	if (!model[0]->model()->load("C:/Users/mnguyen287/Desktop/handlebars.obj")) {
+	if (!model[0]->model()->load("C:/Users/jacko/Desktop/mikeproj1/newhandlebars.obj")) {
 		gsout << "handlebars not loaded" << gsnl;
 	}
 	handlebarsGroup->separator(true);
 	//model[0]->model()->centralize();
-	model[0]->model()->get_bounding_box(b0);
-	m[0].translation(GsVec(0.0f, 0.0f, b0.dz()) / 2.0f);
+	//model[0]->model()->get_bounding_box(b0);
+	x1 = 0.0f;
+	y = 5.0f;
+	z1 = 0.0f;
+	m[0].translation(GsVec(x1, y, z1));
 	t[0]->set(m[0]);
 
-	if (!model[1]->model()->load("C:/Users/mnguyen287/Desktop/frame.obj")) {
+	if (!model[1]->model()->load("C:/Users/jacko/Desktop/mikeproj1/frame.obj")) {
 		gsout << "frame not loaded" << gsnl;
 	}
 	frameGroup->separator(true);
 	//model[1]->model()->centralize();
-	model[1]->model()->get_bounding_box(b1);
-	m[1].translation(GsVec(0.0f, 0.0f, b1.dz()));
+	//model[1]->model()->get_bounding_box(b1);
+	x2 = 4.0f;
+	y2 = -10.0f;
+	z2 = 0.0f;
+	m[1].translation(GsVec(x2, y2, z2));
 	t[1]->set(m[1]);
 
-	if (!model[2]->model()->load("C:/Users/mnguyen287/Desktop/seat.obj")) {
+	if (!model[2]->model()->load("C:/Users/jacko/Desktop/mikeproj1/seat.obj")) {
 		gsout << "seat not loaded" << gsnl;
 	}
 	seatGroup->separator(true);
 	//model[2]->model()->centralize();
-	model[2]->model()->get_bounding_box(b2);
-	m[2].translation(GsVec(0.0f, 0.0f, b2.dz()));
+	//model[2]->model()->get_bounding_box(b2);
+	x3 = 0.0f;
+	y3 = 5.0f;
+	z3 = 0.0f;
+	m[2].translation(GsVec(x3, y3, z3));
 	t[2]->set(m[2]);
 
-	if (!model[3]->model()->load("C:/Users/mnguyen287/Desktop/backwheel.obj")) {
+	if (!model[3]->model()->load("C:/Users/jacko/Desktop/mikeproj1/backwheel.obj")) {
 		gsout << "backwheel not loaded" << gsnl;
 	}
 	backwheelGroup->separator(true);
 	//model[3]->model()->centralize();
-	model[3]->model()->get_bounding_box(b3);
-	m[3].translation(GsVec(0.0f, 0.0f, b3.dz()) / 2.0f);
+	//model[3]->model()->get_bounding_box(b3);
+	x4 = 0.0f;
+	y4 = -5.0f;
+	z4 = 0.0f;
+	m[3].translation(GsVec(x4, y4, z4));
 	t[3]->set(m[3]);
 
-	if (!model[4]->model()->load("C:/Users/mnguyen287/Desktop/left foot.obj")) {
+	if (!model[4]->model()->load("C:/Users/jacko/Desktop/mikeproj1/left foot.obj")) {
 		gsout << "left foot not loaded" << gsnl;
 	}
 	leftfootGroup->separator(true);
 	//model[4]->model()->centralize();
-	model[4]->model()->get_bounding_box(b4);
-	m[4].translation(GsVec(0.0f, 0.0f, b4.dz()));
+	//model[4]->model()->get_bounding_box(b4);
+	x5 = 0.0f;
+	y5 = -3.0f;
+	z5 = 0.0f;
+	m[4].translation(GsVec(x5, y5, z5));
 	t[4]->set(m[4]);
 
-	if (!model[5]->model()->load("C:/Users/mnguyen287/Desktop/right foot.obj")) {
+	if (!model[5]->model()->load("C:/Users/jacko/Desktop/mikeproj1/right foot.obj")) {
 		gsout << "right foot not loaded" << gsnl;
 	}
 	rightfootGroup->separator(true);
 	//model[5]->model()->centralize();
-	model[5]->model()->get_bounding_box(b5);
-	m[5].translation(GsVec(0.0f, 0.0f, b5.dz()));
+	//model[5]->model()->get_bounding_box(b5);
+	x6 = 0.0f;
+	y6 = 0.0f;
+	z6 = 0.0f;
+	m[5].translation(GsVec(x6, y6, z6));
 	t[5]->set(m[5]);
 
-	for (int i = 0; i < 6; i++) {
+	if (!model[6]->model()->load("C:/Users/jacko/Desktop/mikeproj1/frontwheel.obj")) {
+		gsout << "right foot not loaded" << gsnl;
+	}
+	rightfootGroup->separator(true);
+	//model[6]->model()->centralize();
+	//model[6]->model()->get_bounding_box(b6);
+	x7 = 0.0f;
+	y7 = 0.0f;
+	z7 = 0.0f;
+	m[6].translation(GsVec(x7, y7, z7));
+	t[6]->set(m[6]);
+
+	for (int i = 0; i < 7; i++) {
 		g->add(t[i]);
 		g->add(model[i]);
 	}
+
+	//p = new SnPrimitive(GsPrimitive::Cylinder, 5, 5, 0.25f); // watch face
+	//p->prim().material.diffuse = GsColor::darkblue;
+	//p->prim().orientation = GsQuat(GsVec::i, (float)GS_PIDIV2);
 
 	rootg()->add(g);
 }
