@@ -97,8 +97,10 @@ void MyViewer::build_scene()
 	handlebarsGroup->separator(true);
 	//model[0]->model()->centralize();
 	//model[0]->model()->get_bounding_box(b0);
+	handlebarsGroup->add(t[0]);
+	handlebarsGroup->add(model[0]);
 	x1 = 0.0f;
-	y = 5.0f;
+	y = -5.0f;
 	z1 = 0.0f;
 	m[0].translation(GsVec(x1, y, z1));
 	t[0]->set(m[0]);
@@ -107,10 +109,12 @@ void MyViewer::build_scene()
 		gsout << "frame not loaded" << gsnl;
 	}
 	frameGroup->separator(true);
+	frameGroup->add(t[1]);
+	frameGroup->add(model[1]);
 	//model[1]->model()->centralize();
 	//model[1]->model()->get_bounding_box(b1);
-	x2 = 4.0f;
-	y2 = -10.0f;
+	x2 = -20.0f;
+	y2 = -15.0f;
 	z2 = 0.0f;
 	m[1].translation(GsVec(x2, y2, z2));
 	t[1]->set(m[1]);
@@ -119,10 +123,12 @@ void MyViewer::build_scene()
 		gsout << "seat not loaded" << gsnl;
 	}
 	seatGroup->separator(true);
+	seatGroup->add(t[2]);
+	seatGroup->add(model[2]);
 	//model[2]->model()->centralize();
 	//model[2]->model()->get_bounding_box(b2);
-	x3 = 0.0f;
-	y3 = 5.0f;
+	x3 = -0.5f;
+	y3 = 15.0f;
 	z3 = 0.0f;
 	m[2].translation(GsVec(x3, y3, z3));
 	t[2]->set(m[2]);
@@ -131,10 +137,12 @@ void MyViewer::build_scene()
 		gsout << "backwheel not loaded" << gsnl;
 	}
 	backwheelGroup->separator(true);
+	backwheelGroup->add(t[3]);
+	backwheelGroup->add(model[3]);
 	//model[3]->model()->centralize();
 	//model[3]->model()->get_bounding_box(b3);
-	x4 = 0.0f;
-	y4 = -5.0f;
+	x4 = -10.0f;
+	y4 = -20.0f;
 	z4 = 0.0f;
 	m[3].translation(GsVec(x4, y4, z4));
 	t[3]->set(m[3]);
@@ -143,11 +151,13 @@ void MyViewer::build_scene()
 		gsout << "left foot not loaded" << gsnl;
 	}
 	leftfootGroup->separator(true);
+	leftfootGroup->add(t[4]);
+	leftfootGroup->add(model[4]);
 	//model[4]->model()->centralize();
 	//model[4]->model()->get_bounding_box(b4);
-	x5 = 0.0f;
-	y5 = -3.0f;
-	z5 = 0.0f;
+	x5 = 13.0f;
+	y5 = 1.0f;
+	z5 = -4.0f;
 	m[4].translation(GsVec(x5, y5, z5));
 	t[4]->set(m[4]);
 
@@ -155,23 +165,27 @@ void MyViewer::build_scene()
 		gsout << "right foot not loaded" << gsnl;
 	}
 	rightfootGroup->separator(true);
+	rightfootGroup->add(t[5]);
+	rightfootGroup->add(model[5]);
 	//model[5]->model()->centralize();
 	//model[5]->model()->get_bounding_box(b5);
-	x6 = 0.0f;
-	y6 = 0.0f;
-	z6 = 0.0f;
+	x6 = 4.0f;
+	y6 = -2.5f;
+	z6 = 3.5f;
 	m[5].translation(GsVec(x6, y6, z6));
 	t[5]->set(m[5]);
 
 	if (!model[6]->model()->load("C:/Users/jacko/Desktop/mikeproj1/frontwheel.obj")) {
-		gsout << "right foot not loaded" << gsnl;
+		gsout << "frontwheel not loaded" << gsnl;
 	}
-	rightfootGroup->separator(true);
+	frontwheelGroup->separator(true);
+	frontwheelGroup->add(t[6]);
+	frontwheelGroup->add(model[6]);
 	//model[6]->model()->centralize();
 	//model[6]->model()->get_bounding_box(b6);
-	x7 = 0.0f;
+	x7 = 18.0f;
 	y7 = 0.0f;
-	z7 = 0.0f;
+	z7 = 1.0f;
 	m[6].translation(GsVec(x7, y7, z7));
 	t[6]->set(m[6]);
 
